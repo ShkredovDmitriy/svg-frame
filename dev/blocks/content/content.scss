@@ -1,0 +1,33 @@
+.content {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: $color-white;
+}
+
+//
+
+.card {
+  position: relative;
+  width: 28.125rem;
+  height: 37.5rem;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.ds-frame__svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  svg {
+    display: block;
+    fill: #ffffff;
+    stroke: #28F1FE;
+    stroke-width: 2;
+  }
+}
