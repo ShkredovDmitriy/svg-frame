@@ -1,3 +1,4 @@
 import "~/common/scss/main.scss";
 
-require("./svg-resizer");
+import svgFrame from "./../components/ds-svg-frame/svg-frame";
+svgFrame();
