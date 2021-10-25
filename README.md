@@ -1,4 +1,4 @@
-# ds-svg-frame
+# svg-frame
 
 Live example https://shkredovdmitriy.github.io/svg-frame/
 
