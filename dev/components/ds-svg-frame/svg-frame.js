@@ -45,6 +45,8 @@ const svgFrame = config => {
 
       canvas.width = w;
       canvas.height = h;
+      ctx.beginPath();
+      ctx.moveTo();
     });
 
     resizeObserver.observe(WrElement);
