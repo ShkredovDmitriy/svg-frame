@@ -35,7 +35,10 @@ const svgFrame = config => {
       });
       // console.log(frame);
       const svg = `<svg class="frame" viewBox="0 0 ${w} ${h}"><polygon points="${frame}" fill="inherit" stroke-width="inherit" stroke="inherit"/></svg>`;
-      WrElement.innerHTML = svg;
+
+      window.requestAnimationFrame(timestamp => {
+        WrElement.innerHTML = svg;
+      });
     });
 
     resizeObserver.observe(WrElement);
