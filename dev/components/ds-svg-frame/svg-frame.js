@@ -9,7 +9,7 @@ const svgFrame = config => {
   const WrElement = document.querySelector(wrapper) || "";
   const canvas = document.getElementById("dsSvgFrameCanvas");
   const ctx = canvas.getContext("2d");
-  ctx.strokeStyle = "white";
+  ctx.strokeStyle = "#28f1fe";
   ctx.lineWidth = 2;
 
   if (config) {
@@ -21,11 +21,8 @@ const svgFrame = config => {
     const resizeObserver = new ResizeObserver(entry => {
       const w = WrElement.clientWidth || 0;
       const h = WrElement.clientHeight || 0;
-      canvas.width = w;
-      canvas.height = h;
-      ctx.beginPath();
 
-      dots.map((coord, i) => {
+      const frame = dots.map(coord => {
         let x = coord.split(",")[0];
         let y = coord.split(",")[1];
         if (x === "w" || x === "100%") x = w - 1;
@@ -39,22 +36,19 @@ const svgFrame = config => {
         if (x[0] === "-") x = w + Number(x) || w;
         if (y[0] === "-") y = h + Number(y) || h;
         x = Math.floor(x);
-
-        if (i === 0) ctx.moveTo(parseInt(x), parseInt(y));
-        else ctx.lineTo(parseInt(x), parseInt(y));
-        console.log(x);
-        console.log(y);
-
-        // return [x, y].join(",");
+        return [x, y].join(",");
       });
-
-      ctx.closePath();
-      ctx.stroke();
 
       // console.log(frame);
       // const svg = `<svg class="frame" viewBox="0 0 ${w} ${h}"><polygon points="${frame}" fill="inherit" stroke-width="inherit" stroke="inherit"/></svg>`;
       // WrElement.innerHTML = svg;
+
+      canvas.width = w;
+      canvas.height = h;
+      ctx.beginPath();
+      ctx.moveTo();
     });
+
     resizeObserver.observe(WrElement);
   }
 };
