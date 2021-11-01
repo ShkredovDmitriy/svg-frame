@@ -7,11 +7,6 @@ const svgFrame = config => {
   let dots = defaultConfig.dots;
   let wrapper = defaultConfig.wrapper;
   const WrElement = document.querySelector(wrapper) || "";
-  const canvas = document.getElementById("dsSvgFrameCanvas");
-  const ctx = canvas.getContext("2d");
-  ctx.strokeStyle = "#28f1fe";
-  ctx.lineWidth = 2;
-
   if (config) {
     dots = config.dots || defaultConfig.dots;
     wrapper = config.wrapper || defaultConfig.wrapper;
@@ -38,13 +33,9 @@ const svgFrame = config => {
         x = Math.floor(x);
         return [x, y].join(",");
       });
-
       // console.log(frame);
-      // const svg = `<svg class="frame" viewBox="0 0 ${w} ${h}"><polygon points="${frame}" fill="inherit" stroke-width="inherit" stroke="inherit"/></svg>`;
-      // WrElement.innerHTML = svg;
-
-      canvas.width = w;
-      canvas.height = h;
+      const svg = `<svg class="frame" viewBox="0 0 ${w} ${h}"><polygon points="${frame}" fill="inherit" stroke-width="inherit" stroke="inherit"/></svg>`;
+      WrElement.innerHTML = svg;
     });
 
     resizeObserver.observe(WrElement);
